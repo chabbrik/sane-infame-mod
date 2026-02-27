@@ -1,0 +1,36 @@
+# Overrides vanilla dp_ban_slavery to fix a bug where the slavery ban law is not
+# activated when the target backs down (concedes without war). Vanilla's on_demand_accepted
+# is missing, so a peaceful resolution produces no actual effect. This restores parity
+# with the war-path enforcement, which the engine handles correctly via kind = ban_slavery.
+
+dp_ban_slavery = {
+	war_goal = ban_slavery
+
+	texture = "gfx/interface/icons/war_goals/ban_slavery.dds"
+
+	add_infamy_for_starting_target_wargoals = yes
+
+	possible = {
+		NOT = { is_country_type = decentralized }
+		aggressive_diplomatic_plays_permitted = yes
+		NOT = { is_subject_of = scope:target_country }
+		scope:target_country = {
+			NOT = { is_country_type = decentralized }
+			NOT = { is_subject_of = root }
+		}
+	}
+
+	ai_acceptance_max = 90
+
+	on_weekly_pulse = {}
+
+	on_war_begins = {}
+
+	on_war_end = {}
+
+	on_demand_accepted = {
+		scope:target_country = {
+			activate_law = law_type:law_slavery_banned
+		}
+	}
+}

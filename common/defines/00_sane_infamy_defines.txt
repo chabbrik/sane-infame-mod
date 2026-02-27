@@ -1,0 +1,15 @@
+# Infamy defines tweaks.
+#
+# BASE_YEARLY_INFAMY_DECAY_RATE: vanilla 5.0 → 6.0
+#   +20% passive decay per year. Rewards staying out of wars; countries that
+#   fight one justified war and then stop can recover reputation at a reasonable pace.
+#
+# WAR_GOAL_INFAMY_PEACE_REFUND: vanilla -0.5 → -0.75
+#   When a country capitulates or negotiates peace without enforcing a war goal,
+#   75% of that goal's staged infamy is refunded (up from 50%). Rewards restraint
+#   in peace negotiations — not squeezing every demand from a beaten enemy.
+
+NDiplomacy = {
+	BASE_YEARLY_INFAMY_DECAY_RATE = 6.0
+	WAR_GOAL_INFAMY_PEACE_REFUND = -0.75
+}
